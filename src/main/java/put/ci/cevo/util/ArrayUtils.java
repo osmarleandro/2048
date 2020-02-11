@@ -1,5 +1,6 @@
 package put.ci.cevo.util;
 
+import java.lang.reflect.Type;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
@@ -183,5 +184,11 @@ public class ArrayUtils {
 			res[i] = a[i] * multiplier;
 		}
 		return res;
+	}
+
+	public static void extracted(Type genericType, Class<?>[] arguments) {
+		if (arguments.length != 1)
+			throw new IllegalArgumentException("Expected 1 type argument on generic type " + genericType
+				+ " but found " + arguments.length);
 	}
 }

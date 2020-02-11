@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import put.ci.cevo.util.ArrayUtils;
+
 /**
  * Enhanced type resolution utilities. Originally based on org.springframework.core.GenericTypeResolver.
  * 
@@ -96,15 +98,9 @@ public final class TypeResolver {
 		if (arguments == null)
 			return Unknown.class;
 
-		extracted(genericType, arguments);
+		ArrayUtils.extracted(genericType, arguments);
 
 		return arguments[0];
-	}
-
-	private static void extracted(Type genericType, Class<?>[] arguments) {
-		if (arguments.length != 1)
-			throw new IllegalArgumentException("Expected 1 type argument on generic type " + genericType
-				+ " but found " + arguments.length);
 	}
 
 	/**
