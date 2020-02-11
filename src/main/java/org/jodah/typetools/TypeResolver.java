@@ -15,6 +15,8 @@
  */
 package org.jodah.typetools;
 
+import put.ci.cevo.util.ArrayUtils;
+
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
@@ -96,15 +98,9 @@ public final class TypeResolver {
 		if (arguments == null)
 			return Unknown.class;
 
-		extracted(genericType, arguments);
+		ArrayUtils.extracted(genericType, arguments);
 
 		return arguments[0];
-	}
-
-	private static void extracted(Type genericType, Class<?>[] arguments) throws IllegalArgumentException {
-		if (arguments.length != 1)
-			throw new IllegalArgumentException("Expected 1 type argument on generic type " + genericType
-				+ " but found " + arguments.length);
 	}
 
 	/**
