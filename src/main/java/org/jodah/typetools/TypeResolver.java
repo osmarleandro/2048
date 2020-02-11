@@ -96,11 +96,15 @@ public final class TypeResolver {
 		if (arguments == null)
 			return Unknown.class;
 
+		extracted(genericType, arguments);
+
+		return arguments[0];
+	}
+
+	private static void extracted(Type genericType, Class<?>[] arguments) {
 		if (arguments.length != 1)
 			throw new IllegalArgumentException("Expected 1 type argument on generic type " + genericType
 				+ " but found " + arguments.length);
-
-		return arguments[0];
 	}
 
 	/**
