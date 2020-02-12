@@ -12,10 +12,10 @@ import com.google.common.base.Preconditions;
  */
 public class StandardSymmetryExpander implements SymmetryExpander {
 
-	private final int boardSize;
+	private final int boardSizeRenamed;
 
 	public StandardSymmetryExpander(int boardSize) {
-		this.boardSize = boardSize;
+		this.boardSizeRenamed = boardSize;
 	}
 
 	@Override
@@ -23,10 +23,10 @@ public class StandardSymmetryExpander implements SymmetryExpander {
 		Preconditions.checkArgument(BoardUtils.isValidPosition(location, boardSize()), "Location: " + location
 			+ " is invalid; board size: " + boardSize());
 
-		int M = boardSize - 1;
+		int M = boardSizeRenamed - 1;
 
-		int c = BoardUtils.colFromPos(location, boardSize);
-		int r = BoardUtils.rowFromPos(location, boardSize);
+		int c = BoardUtils.colFromPos(location, boardSizeRenamed);
+		int r = BoardUtils.rowFromPos(location, boardSizeRenamed);
 
 		// @formatter:off
 		int[] a = new int[] {
@@ -47,11 +47,11 @@ public class StandardSymmetryExpander implements SymmetryExpander {
 	}
 
 	public int flat(int c, int r) {
-		return BoardUtils.toMarginPos(boardSize, r, c);
+		return BoardUtils.toMarginPos(boardSizeRenamed, r, c);
 	}
 
 	public int boardSize() {
-		return boardSize;
+		return boardSizeRenamed;
 	}
 
 	@Override
