@@ -14,6 +14,7 @@ public class Game2048Board extends Board implements Serializable {
 	static final int WIDTH = SIZE + 2 * MARGIN_WIDTH;
 	static final int BUFFER_SIZE = WIDTH * WIDTH;
 	final int[] buffer;
+	protected static final int WALL = -2;
 
 	private Game2048Board(int[] buffer) {
 		Preconditions.checkArgument(buffer.length == BUFFER_SIZE);
@@ -37,10 +38,10 @@ public class Game2048Board extends Board implements Serializable {
 
 	private void initMargins() {
 		for (int i = 0; i < WIDTH; ++i) {
-			setValueInternal(0, i, WALL);
-			setValueInternal(WIDTH - 1, i, WALL);
-			setValueInternal(i, 0, WALL);
-			setValueInternal(i, WIDTH - 1, WALL);
+			setValueInternal(0, i, Game2048Board.WALL);
+			setValueInternal(WIDTH - 1, i, Game2048Board.WALL);
+			setValueInternal(i, 0, Game2048Board.WALL);
+			setValueInternal(i, WIDTH - 1, Game2048Board.WALL);
 		}
 	}
 
