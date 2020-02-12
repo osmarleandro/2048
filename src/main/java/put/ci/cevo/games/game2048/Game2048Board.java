@@ -6,6 +6,7 @@ import java.util.Arrays;
 import com.google.common.base.Preconditions;
 import put.ci.cevo.games.board.Board;
 import put.ci.cevo.games.board.BoardUtils;
+import put.ci.cevo.games.board.SuperType;
 
 public class Game2048Board extends Board implements Serializable {
 
@@ -119,7 +120,7 @@ public class Game2048Board extends Board implements Serializable {
 	}
 
 	@Override
-	public Board clone() {
+	public SuperType clone() {
 		return new Game2048Board(this.buffer);
 	}
 

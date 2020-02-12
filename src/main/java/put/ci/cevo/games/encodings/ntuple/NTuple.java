@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.math3.random.RandomDataGenerator;
 
-import put.ci.cevo.games.board.Board;
+import put.ci.cevo.games.board.SuperType;
 import put.ci.cevo.util.RandomUtils;
 
 import com.google.common.base.Joiner;
@@ -46,11 +46,11 @@ public class NTuple {
 		this(template.numValues, template.locations.clone(), template.LUT.clone());
 	}
 
-	public double valueFor(Board board) {
+	public double valueFor(SuperType board) {
 		return LUT[address(board)];
 	}
 
-	public int address(Board board) {
+	public int address(SuperType board) {
 		int address = 0;
 		for (int location : locations) {
 			address *= numValues;
