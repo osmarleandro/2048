@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import put.ci.cevo.games.board.Board;
 import put.ci.cevo.games.encodings.ntuple.eval.DefaultNTupleEvaluator;
 import put.ci.cevo.games.encodings.ntuple.expanders.IdentitySymmetryExpander;
 import put.ci.cevo.games.encodings.ntuple.expanders.SymmetryExpander;
@@ -155,7 +156,7 @@ public class NTuples implements Iterable<NTuple>, Serializable, RealFunction {
 
 		double delta = error * learningRate;
 
-        Game2048Board board = new Game2048Board(input);
+        Board board = new Game2048Board(input);
 		for (NTuple tuple : getAll()) {
 			tuple.getWeights()[tuple.address(board)] += delta;
 		}
