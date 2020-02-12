@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 import put.ci.cevo.games.board.Board;
 import put.ci.cevo.games.board.BoardUtils;
 
-public class Game2048Board implements Board, Serializable {
+public class Game2048Board extends Board implements Serializable {
 
 	public static final int SIZE = Game2048.SIZE;
 	static final int MARGIN_WIDTH = BoardUtils.MARGIN_WIDTH;

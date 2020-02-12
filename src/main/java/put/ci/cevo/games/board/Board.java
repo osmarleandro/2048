@@ -1,9 +1,9 @@
 package put.ci.cevo.games.board;
 
-public interface Board {
+public abstract class Board {
 
-	public int getWidth();
-	public int getHeight();
+	public abstract int getWidth();
+	public abstract int getHeight();
 
 	/**
 	 * @param row
@@ -11,14 +11,14 @@ public interface Board {
 	 * @param col
 	 *            0-based index
 	 */
-	public int getValue(int row, int col);
-	public void setValue(int row, int col, int color);
+	public abstract int getValue(int row, int col);
+	public abstract void setValue(int row, int col, int color);
 
 	/**
 	 * @param pos
 	 *            pos is not 0-based. It is currently implementation dependent
 	 */
-	public int getValue(int pos);
+	public abstract int getValue(int pos);
 
-	public Board clone();
+	public abstract Board clone();
 }
