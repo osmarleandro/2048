@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import com.google.common.base.Preconditions;
 import put.ci.cevo.games.board.Board;
+import put.ci.cevo.games.board.BoardPos;
 import put.ci.cevo.games.board.BoardUtils;
 
 public class Game2048Board extends Board implements Serializable {
@@ -132,6 +133,10 @@ public class Game2048Board extends Board implements Serializable {
 	@Override
 	public int getHeight() {
 		return getSize();
+	}
+
+	public BoardPos newBoard(int row, int column) {
+		return new BoardPos(row, column);
 	}
 
 }
