@@ -13,8 +13,6 @@ public class Game2048Board extends Board implements Serializable {
 	static final int MARGIN_WIDTH = BoardUtils.MARGIN_WIDTH;
 	static final int WIDTH = SIZE + 2 * MARGIN_WIDTH;
 	static final int BUFFER_SIZE = WIDTH * WIDTH;
-	static final int WALL = -2;
-
 	final int[] buffer;
 
 	private Game2048Board(int[] buffer) {
