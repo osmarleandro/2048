@@ -2,8 +2,6 @@ package put.ci.cevo.games.board;
 
 public class SuperClassExtracted {
 	
-	private int gameCounter;
-
 	public SuperClassExtracted() {
 		super();
 	}
