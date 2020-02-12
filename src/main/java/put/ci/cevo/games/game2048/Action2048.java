@@ -20,7 +20,7 @@ public enum Action2048 implements Action {
 	}
 
 	@Override
-	public double[] getDescription() {
+	public double[] getDescriptionRenamed() {
 		return new double[] { dirRow, dirCol };
 	}
 
