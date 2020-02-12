@@ -9,7 +9,7 @@ import put.ci.cevo.games.board.BoardUtils;
 
 public class Game2048Board implements Board, Serializable {
 
-	public static final int SIZE = State2048.SIZE;
+	public static final int SIZE = Game2048.SIZE;
 	static final int MARGIN_WIDTH = BoardUtils.MARGIN_WIDTH;
 	static final int WIDTH = SIZE + 2 * MARGIN_WIDTH;
 	static final int BUFFER_SIZE = WIDTH * WIDTH;
