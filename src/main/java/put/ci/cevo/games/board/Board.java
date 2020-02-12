@@ -1,6 +1,6 @@
 package put.ci.cevo.games.board;
 
-public abstract class Board {
+public abstract class Board extends SuperClassExtracted {
 
 	public abstract int getWidth();
 	public abstract int getHeight();
