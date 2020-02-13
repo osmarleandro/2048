@@ -22,7 +22,4 @@ public abstract class Board {
 
 	public abstract Board clone();
 
-	public BoardPos newBoard(int row, int column) {
-		return new BoardPos(row, column);
-	}
 }
