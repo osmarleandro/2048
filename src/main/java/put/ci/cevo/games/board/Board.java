@@ -2,8 +2,6 @@ package put.ci.cevo.games.board;
 
 public abstract class Board {
 
-	static final int WALL = -2;
-
 	public abstract int getWidth();
 	public abstract int getHeight();
 

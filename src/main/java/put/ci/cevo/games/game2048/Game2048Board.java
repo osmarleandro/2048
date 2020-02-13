@@ -38,10 +38,10 @@ public class Game2048Board extends Board implements Serializable {
 
 	private void initMargins() {
 		for (int i = 0; i < WIDTH; ++i) {
-			setValueInternal(0, i, WALL);
-			setValueInternal(WIDTH - 1, i, WALL);
-			setValueInternal(i, 0, WALL);
-			setValueInternal(i, WIDTH - 1, WALL);
+			setValueInternal(0, i, BoardUtils.WALL);
+			setValueInternal(WIDTH - 1, i, BoardUtils.WALL);
+			setValueInternal(i, 0, BoardUtils.WALL);
+			setValueInternal(i, WIDTH - 1, BoardUtils.WALL);
 		}
 	}
 

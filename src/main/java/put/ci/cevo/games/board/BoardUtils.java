@@ -4,8 +4,9 @@ public final class BoardUtils {
 
 	public static final int MARGIN_WIDTH = 1;
 	public static final int TOTAL_MARGIN = 2 * MARGIN_WIDTH;
+    public static final int WALL = -2;
 
-	private BoardUtils() {
+    private BoardUtils() {
 		// A static class
 	}
 
