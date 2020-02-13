@@ -135,7 +135,4 @@ public class Game2048Board extends Board implements Serializable {
 		return getSize();
 	}
 
-	public BoardPos newBoard(int row, int column) {
-		return new BoardPos(row, column);
-	}
 }
