@@ -11,8 +11,7 @@ import put.ci.cevo.util.RandomUtils;
 
 public class State2048 implements State {
 
-	public static final int SIZE = 4;
-	public static final RectSize BOARD_SIZE = new RectSize(SIZE);
+	public static final RectSize BOARD_SIZE = new RectSize(Game2048.SIZE);
 	public static final int NUM_INITIAL_LOCATIONS = 2;
 	public static final double RANDOM_FOUR_PROB = 0.1;
 
@@ -25,30 +24,30 @@ public class State2048 implements State {
 	}
 
 	private State2048() {
-		board = new int[SIZE][SIZE];
+		board = new int[Game2048.SIZE][Game2048.SIZE];
 	}
 
 	public State2048(State2048 state) {
-		board = new int[SIZE][SIZE];
-		for (int row = 0; row < SIZE; row++) {
+		board = new int[Game2048.SIZE][Game2048.SIZE];
+		for (int row = 0; row < Game2048.SIZE; row++) {
 			board[row] = state.board[row].clone();
 		}
 	}
 
 	public State2048(double[] features) {
-		board = new int[SIZE][SIZE];
+		board = new int[Game2048.SIZE][Game2048.SIZE];
 		int index = 0;
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
 				board[row][col] = (int) features[index++];
 			}
 		}
 	}
 
 	public int[][] getPowerGrid() {
-		int[][] grid = new int[SIZE][SIZE];
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		int[][] grid = new int[Game2048.SIZE][Game2048.SIZE];
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
 				grid[row][col] = REWARDS[board[row][col]];
 			}
 		}
@@ -58,9 +57,9 @@ public class State2048 implements State {
 	@Override
 	public double[] getFeatures() {
 		int index = 0;
-		double[] features = new double[SIZE * SIZE];
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		double[] features = new double[Game2048.SIZE * Game2048.SIZE];
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
 				features[index++] = board[row][col];
 			}
 		}
@@ -68,16 +67,16 @@ public class State2048 implements State {
 	}
 
 	private int getValue(int flatLocation) {
-		return board[flatLocation / SIZE][flatLocation % SIZE];
+		return board[flatLocation / Game2048.SIZE][flatLocation % Game2048.SIZE];
 	}
 
 	private void setValue(int flatLocation, int value) {
-		board[flatLocation / SIZE][flatLocation % SIZE] = value;
+		board[flatLocation / Game2048.SIZE][flatLocation % Game2048.SIZE] = value;
 	}
 
 	public List<Pair<Double, State2048>> getPossibleNextStates() {
 		List<Integer> emptyLocations = new ArrayList<>();
-		for (int location = 0; location < SIZE * SIZE; location++) {
+		for (int location = 0; location < Game2048.SIZE * Game2048.SIZE; location++) {
 			if (getValue(location) == 0) {
 				emptyLocations.add(location);
 			}
@@ -103,7 +102,7 @@ public class State2048 implements State {
 
 	public void addRandomTile(RandomDataGenerator random) {
 		List<Integer> emptyLocations = new ArrayList<>();
-		for (int location = 0; location < SIZE * SIZE; location++) {
+		for (int location = 0; location < Game2048.SIZE * Game2048.SIZE; location++) {
 			if (getValue(location) == 0) {
 				emptyLocations.add(location);
 			}
@@ -121,10 +120,10 @@ public class State2048 implements State {
 	public int moveUp() {
 		int reward = 0;
 
-		for (int col = 0; col < SIZE; col++) {
+		for (int col = 0; col < Game2048.SIZE; col++) {
 			int firstFreeRow = 0;
 			boolean alreadyAggregated = false;
-			for (int row = 0; row < SIZE; row++) {
+			for (int row = 0; row < Game2048.SIZE; row++) {
 				if (board[row][col] == 0) {
 					continue;
 				}
@@ -146,13 +145,13 @@ public class State2048 implements State {
 	}
 
 	public void rotateBoard() {
-		for (int i = 0; i < SIZE / 2; i++) {
-			for (int j = i; j < SIZE - i - 1; j++) {
+		for (int i = 0; i < Game2048.SIZE / 2; i++) {
+			for (int j = i; j < Game2048.SIZE - i - 1; j++) {
 				int tmp = board[i][j];
-				board[i][j] = board[j][SIZE - i - 1];
-				board[j][SIZE - i - 1] = board[SIZE - i - 1][SIZE - j - 1];
-				board[SIZE - i - 1][SIZE - j - 1] = board[SIZE - j - 1][i];
-				board[SIZE - j - 1][i] = tmp;
+				board[i][j] = board[j][Game2048.SIZE - i - 1];
+				board[j][Game2048.SIZE - i - 1] = board[Game2048.SIZE - i - 1][Game2048.SIZE - j - 1];
+				board[Game2048.SIZE - i - 1][Game2048.SIZE - j - 1] = board[Game2048.SIZE - j - 1][i];
+				board[Game2048.SIZE - j - 1][i] = tmp;
 			}
 		}
 	}
@@ -197,8 +196,8 @@ public class State2048 implements State {
 		boolean[] set = new boolean[4];
 		ArrayList<Action2048> moves = new ArrayList<>(4);
 
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
 				if (board[row][col] > 0) {
 					continue;
 				}
@@ -214,7 +213,7 @@ public class State2048 implements State {
 				}
 
 				if (!set[Action2048.LEFT.id()]) {
-					for (int col2 = col + 1; col2 < SIZE; col2++) {
+					for (int col2 = col + 1; col2 < Game2048.SIZE; col2++) {
 						if (board[row][col2] > 0) {
 							set[Action2048.LEFT.id()] = true;
 							moves.add(Action2048.LEFT);
@@ -234,7 +233,7 @@ public class State2048 implements State {
 				}
 
 				if (!set[Action2048.UP.id()]) {
-					for (int row2 = row + 1; row2 < SIZE; row2++) {
+					for (int row2 = row + 1; row2 < Game2048.SIZE; row2++) {
 						if (board[row2][col] > 0) {
 							set[Action2048.UP.id()] = true;
 							moves.add(Action2048.UP);
@@ -250,8 +249,8 @@ public class State2048 implements State {
 		}
 
 		if (!set[Action2048.RIGHT.id()] || !set[Action2048.LEFT.id()]) {
-			for (int row = 0; row < SIZE; row++) {
-				for (int col = 0; col < SIZE - 1; col++) {
+			for (int row = 0; row < Game2048.SIZE; row++) {
+				for (int col = 0; col < Game2048.SIZE - 1; col++) {
 					if (board[row][col] > 0 && board[row][col] == board[row][col + 1]) {
 						set[Action2048.LEFT.id()] = true;
 						set[Action2048.RIGHT.id()] = true;
@@ -263,8 +262,8 @@ public class State2048 implements State {
 		}
 
 		if (!set[Action2048.DOWN.id()] || !set[Action2048.UP.id()]) {
-			for (int col = 0; col < SIZE; col++) {
-				for (int row = 0; row < SIZE - 1; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
+				for (int row = 0; row < Game2048.SIZE - 1; row++) {
 					if (board[row][col] > 0 && board[row][col] == board[row + 1][col]) {
 						set[Action2048.UP.id()] = true;
 						set[Action2048.DOWN.id()] = true;
@@ -280,8 +279,8 @@ public class State2048 implements State {
 
 	private boolean hasEqualNeighbour(final int row, final int column) {
 		if ((row > 0 && board[row - 1][column] == board[row][column])
-			|| (column < SIZE - 1 && board[row][column + 1] == board[row][column])
-			|| (row < SIZE - 1 && board[row + 1][column] == board[row][column])
+			|| (column < Game2048.SIZE - 1 && board[row][column + 1] == board[row][column])
+			|| (row < Game2048.SIZE - 1 && board[row + 1][column] == board[row][column])
 			|| (column > 0 && board[row][column - 1] == board[row][column])) {
 			return true;
 		} else {
@@ -290,15 +289,15 @@ public class State2048 implements State {
 	}
 
 	public boolean isTerminal() {
-		for (int row = 0; row < SIZE; row++) {
-			for (int column = 0; column < SIZE; column++) {
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int column = 0; column < Game2048.SIZE; column++) {
 				if (board[row][column] == 0) {
 					return false;
 				}
 			}
 		}
-		for (int row = 0; row < SIZE; row++) {
-			for (int column = 0; column < SIZE; column++) {
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int column = 0; column < Game2048.SIZE; column++) {
 				if (hasEqualNeighbour(row, column)) {
 					return false;
 				}
@@ -309,8 +308,8 @@ public class State2048 implements State {
 
 	public int getMaxTile() {
 		int maxTile = 0;
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
 				maxTile = Math.max(maxTile, board[row][col]);
 			}
 		}
@@ -319,8 +318,8 @@ public class State2048 implements State {
 	}
 
 	public void printHumanReadable() {
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		for (int row = 0; row < Game2048.SIZE; row++) {
+			for (int col = 0; col < Game2048.SIZE; col++) {
 				System.out.printf("%5d", REWARDS[board[row][col]]);
 			}
 			System.out.println();

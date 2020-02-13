@@ -10,7 +10,9 @@ import put.ci.cevo.util.Pair;
 
 public class Game2048 implements Environment<State2048, Action2048> {
 
-	@Override
+    public static final int SIZE = 4;
+
+    @Override
 	public Transition<State2048, Action2048> computeTransition(State2048 state, Action2048 action) {
 		State2048 afterState = new State2048(state);
 		int reward = afterState.makeMove(action);
