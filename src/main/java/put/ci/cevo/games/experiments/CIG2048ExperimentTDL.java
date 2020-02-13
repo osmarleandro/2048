@@ -10,7 +10,6 @@ import put.ci.cevo.games.encodings.ntuple.factories.NTuplesAllStraightFactory;
 import put.ci.cevo.games.game2048.State2048;
 import put.ci.cevo.games.game2048.TDLGame2048;
 import put.ci.cevo.games.game2048.TDLGame2048.Game2048Outcome;
-import put.ci.cevo.rl.agent.functions.RealFunction;
 
 public class CIG2048ExperimentTDL {
 
@@ -31,25 +30,21 @@ public class CIG2048ExperimentTDL {
 		for (int i = 0; i <= 100000; i++) {
 			tdlGame2048.TDAfterstateLearn(vFunction, 0.001, 0.01, random);
 			if (i % 5000 == 0) {
-				evaluatePerformance(tdlGame2048, vFunction, 1000, random, i);
+				double performance = 0;
+				double ratio = 0;
+				int maxTile = 0;
+				for (int i1 = 0; i1 < 1000; i1++) {
+					Game2048Outcome res = tdlGame2048.playByAfterstates(vFunction, random);
+
+					performance += res.score();
+					ratio += (res.maxTile() >= 2048) ? 1 : 0;
+					maxTile = Math.max(maxTile, res.maxTile());
+				}
+
+				System.out.println(String.format("After %5d games: avg score = %8.2f, avg ratio = %4.2f, maxTile = %5d", i,
+					performance / 1000, ratio / 1000, maxTile));
 			}
 		}
 	}
 
-	private static void evaluatePerformance(TDLGame2048 game, RealFunction vFunction, int numEpisodes,
-			RandomDataGenerator random, int e) {
-		double performance = 0;
-		double ratio = 0;
-		int maxTile = 0;
-		for (int i = 0; i < numEpisodes; i++) {
-			Game2048Outcome res = game.playByAfterstates(vFunction, random);
-
-			performance += res.score();
-			ratio += (res.maxTile() >= 2048) ? 1 : 0;
-			maxTile = Math.max(maxTile, res.maxTile());
-		}
-
-		System.out.println(String.format("After %5d games: avg score = %8.2f, avg ratio = %4.2f, maxTile = %5d", e,
-			performance / numEpisodes, ratio / numEpisodes, maxTile));
-	}
 }
