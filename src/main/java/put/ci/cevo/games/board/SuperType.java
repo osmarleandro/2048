@@ -1,6 +1,8 @@
 package put.ci.cevo.games.board;
 
 public abstract class SuperType extends SuperClassExtracted {
+    private int gameCounter;
+
     public abstract int getWidth();
 
     public abstract int getHeight();
