@@ -26,7 +26,7 @@ public class Game2048 implements Environment<State2048, Action2048> {
 		return nextState;
 	}
 
-	public List<Pair<Double, State2048>> getPossibleNextStates(State2048 afterState) {
+	List<Pair<Double, State2048>> getPossibleNextStates(State2048 afterState, Object newParam) {
 		return afterState.getPossibleNextStates();
 	}
 
