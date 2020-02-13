@@ -1,6 +1,6 @@
 package put.ci.cevo.games.board;
 
-public abstract class Board {
+public abstract class Board extends SuperClassExtracted {
 
 	public abstract int getWidth();
 	public abstract int getHeight();
@@ -20,7 +20,7 @@ public abstract class Board {
 	 */
 	public abstract int getValue(int pos);
 
-	public abstract Board clone();
+	public abstract SuperClassExtracted clone();
 
 	public BoardPos newBoard(int row, int column) {
 		return new BoardPos(row, column);
