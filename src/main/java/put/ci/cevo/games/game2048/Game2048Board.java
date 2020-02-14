@@ -82,7 +82,21 @@ public class Game2048Board extends Board implements Serializable {
 
 	@Override
 	public String toString() {
-		return extracted();
+		StringBuilder builder = new StringBuilder();
+		builder.append("  ");
+		for (int i = 0; i < getSize(); i++) {
+			builder.append((char) ('A' + i));
+		}
+		builder.append("\n");
+		
+		for (int r = 0; r < getSize(); r++) {
+			builder.append(r + 1 + " ");
+			for (int c = 0; c < getSize(); c++) {
+				builder.append(getValue(r, c));
+			}
+			builder.append("\n");
+		}
+		return builder.toString();
 	}
 
 	private String extracted() {
