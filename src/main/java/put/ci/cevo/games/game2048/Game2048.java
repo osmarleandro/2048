@@ -42,7 +42,7 @@ public class Game2048 implements Environment<State2048, Action2048> {
 
 	@Override
 	public boolean isTerminalState(State2048 state) {
-		return state.isTerminal();
+		return state.isTerminalRenamed();
 	}
 
 	public Pair<Integer, Integer> playGame(Player2048 player, RandomDataGenerator random) {

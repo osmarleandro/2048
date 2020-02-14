@@ -288,7 +288,7 @@ public class State2048 implements State {
 		}
 	}
 
-	public boolean isTerminal() {
+	public boolean isTerminalRenamed() {
 		for (int row = 0; row < Game2048.SIZE; row++) {
 			for (int column = 0; column < Game2048.SIZE; column++) {
 				if (board[row][column] == 0) {
