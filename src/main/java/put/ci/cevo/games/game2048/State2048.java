@@ -330,11 +330,15 @@ public class State2048 implements State {
 	public static State2048 getInitialState(int numLocations, RandomDataGenerator random) {
 		State2048 state = new State2048();
 
+		extracted(numLocations, random, state);
+
+		return state;
+	}
+
+	private static void extracted(int numLocations, RandomDataGenerator random, State2048 state) {
 		for (int i = 0; i < numLocations; i++) {
 			state.addRandomTile(random);
 		}
-
-		return state;
 	}
 
 	public static State2048 getInitialState(RandomDataGenerator random) {
