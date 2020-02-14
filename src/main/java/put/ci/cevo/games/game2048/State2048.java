@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.math3.random.RandomDataGenerator;
-import put.ci.cevo.games.board.RectSize;
+
 import put.ci.cevo.rl.environment.State;
 import put.ci.cevo.util.Pair;
 import put.ci.cevo.util.RandomUtils;
 
 public class State2048 implements State {
 
-	public static final RectSize BOARD_SIZE = new RectSize(Game2048.SIZE);
 	public static final int NUM_INITIAL_LOCATIONS = 2;
 	public static final double RANDOM_FOUR_PROB = 0.1;
 

@@ -7,10 +7,10 @@ import put.ci.cevo.games.encodings.ntuple.NTuples;
 import put.ci.cevo.games.encodings.ntuple.expanders.IdentitySymmetryExpander;
 import put.ci.cevo.games.encodings.ntuple.factories.NTuplesAllRectanglesFactory;
 import put.ci.cevo.games.encodings.ntuple.factories.NTuplesAllStraightFactory;
-import put.ci.cevo.games.game2048.State2048;
 import put.ci.cevo.games.game2048.TDLGame2048;
 import put.ci.cevo.games.game2048.TDLGame2048.Game2048Outcome;
 import put.ci.cevo.rl.agent.functions.RealFunction;
+import put.ci.cevo.rl.environment.State;
 
 public class CIG2048ExperimentTDL {
 
@@ -19,9 +19,9 @@ public class CIG2048ExperimentTDL {
 
 		TDLGame2048 tdlGame2048 = new TDLGame2048();
 
-		NTuples lines = new NTuplesAllStraightFactory(4, State2048.BOARD_SIZE, 15, 0, 0, new IdentitySymmetryExpander())
+		NTuples lines = new NTuplesAllStraightFactory(4, State.BOARD_SIZE, 15, 0, 0, new IdentitySymmetryExpander())
 			.createRandomIndividual(random);
-		NTuples squares = new NTuplesAllRectanglesFactory(new RectSize(2), State2048.BOARD_SIZE, 15, 0, 0, new IdentitySymmetryExpander())
+		NTuples squares = new NTuplesAllRectanglesFactory(new RectSize(2), State.BOARD_SIZE, 15, 0, 0, new IdentitySymmetryExpander())
 			.createRandomIndividual(random);
 		NTuples vFunction = lines.add(squares);
 
