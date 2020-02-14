@@ -4,8 +4,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /** Represents a position on a rectangular board. Position is 0-based */
 public final class BoardPos {
-	private final int row;
-	private final int column;
+	private int row;
+	private int column;
 
 	public int row() {
 		return row;
@@ -19,6 +19,10 @@ public final class BoardPos {
 	 * row or column can be negative
 	 */
 	public BoardPos(int row, int column) {
+		setAttrs(row, column);
+	}
+
+	private void setAttrs(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
