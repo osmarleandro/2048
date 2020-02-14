@@ -14,7 +14,6 @@ public class Game2048Board extends Board implements Serializable {
 	static final int MARGIN_WIDTH = BoardUtils.MARGIN_WIDTH;
 	static final int WIDTH = SIZE + 2 * MARGIN_WIDTH;
 	static final int BUFFER_SIZE = WIDTH * WIDTH;
-	final int[] buffer;
 	protected static final int WALL = -2;
 
 	private Game2048Board(int[] buffer) {
@@ -115,21 +114,6 @@ public class Game2048Board extends Board implements Serializable {
 			builder.append("\n");
 		}
 		return builder.toString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Game2048Board other = (Game2048Board) obj;
-		return Arrays.equals(buffer, other.buffer);
 	}
 
 	@Override
