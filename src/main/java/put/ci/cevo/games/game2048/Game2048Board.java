@@ -10,9 +10,9 @@ import put.ci.cevo.games.board.SuperClassExtracted;
 
 public class Game2048Board extends Board implements Serializable {
 
-	public static final int SIZE = Game2048.SIZE;
+	public static final int SIZE_RENAMED = Game2048.SIZE;
 	static final int MARGIN_WIDTH = BoardUtils.MARGIN_WIDTH;
-	static final int WIDTH = SIZE + 2 * MARGIN_WIDTH;
+	static final int WIDTH = SIZE_RENAMED + 2 * MARGIN_WIDTH;
 	static final int BUFFER_SIZE = WIDTH * WIDTH;
 	protected static final int WALL = -2;
 
@@ -22,18 +22,18 @@ public class Game2048Board extends Board implements Serializable {
 	}
 
 	public Game2048Board(double[] input) {
-		Preconditions.checkArgument(input.length == SIZE * SIZE);
+		Preconditions.checkArgument(input.length == SIZE_RENAMED * SIZE_RENAMED);
 		this.buffer = new int[BUFFER_SIZE];
 		initMargins();
-		for (int r = 0; r < SIZE; ++r) {
-			for (int c = 0; c < SIZE; c++) {
+		for (int r = 0; r < SIZE_RENAMED; ++r) {
+			for (int c = 0; c < SIZE_RENAMED; c++) {
 				setValue(r, c, inputToBoardValue(input, r, c));
 			}
 		}
 	}
 
 	private static int inputToBoardValue(double[] input, int r, int c) {
-		return (int) (input[r * SIZE + c] + 0.5);
+		return (int) (input[r * SIZE_RENAMED + c] + 0.5);
 	}
 
 	private void initMargins() {
@@ -50,7 +50,7 @@ public class Game2048Board extends Board implements Serializable {
 	}
 
 	public int getSize() {
-		return SIZE;
+		return SIZE_RENAMED;
 	}
 
 	@Override
