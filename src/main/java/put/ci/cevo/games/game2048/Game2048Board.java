@@ -82,6 +82,10 @@ public class Game2048Board extends Board implements Serializable {
 
 	@Override
 	public String toString() {
+		return extracted();
+	}
+
+	private String extracted() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("  ");
 		for (int i = 0; i < getSize(); i++) {
@@ -120,7 +124,7 @@ public class Game2048Board extends Board implements Serializable {
 	}
 
 	@Override
-	public SuperClassExtracted clone() {
+	public Board clone() {
 		return new Game2048Board(this.buffer);
 	}
 
