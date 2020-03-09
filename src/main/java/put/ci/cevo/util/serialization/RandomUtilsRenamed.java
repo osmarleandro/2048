@@ -1,4 +1,4 @@
-package put.ci.cevo.util;
+package put.ci.cevo.util.serialization;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +11,7 @@ import com.carrotsearch.hppc.IntDoubleLinkedSet;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
-public class RandomUtils {
+public class RandomUtilsRenamed {
 
 	/**
 	 * Returns a sample without replacement. Complexity: O(m). This is an iterative implementation of the Floyd's random

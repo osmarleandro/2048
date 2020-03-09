@@ -7,7 +7,7 @@ import org.apache.commons.math3.random.RandomDataGenerator;
 import put.ci.cevo.games.board.RectSize;
 import put.ci.cevo.rl.environment.State;
 import put.ci.cevo.util.Pair;
-import put.ci.cevo.util.RandomUtils;
+import put.ci.cevo.util.serialization.RandomUtilsRenamed;
 
 public class State2048 implements State {
 
@@ -108,7 +108,7 @@ public class State2048 implements State {
 			}
 		}
 
-		Integer randomEmptyLocation = RandomUtils.pickRandom(emptyLocations, random);
+		Integer randomEmptyLocation = RandomUtilsRenamed.pickRandom(emptyLocations, random);
 		boolean isFour = (random.nextUniform(0, 1, true) < RANDOM_FOUR_PROB);
 		if (isFour) {
 			setValue(randomEmptyLocation, 2);

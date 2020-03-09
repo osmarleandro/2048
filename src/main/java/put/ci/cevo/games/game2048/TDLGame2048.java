@@ -7,7 +7,7 @@ import put.ci.cevo.games.encodings.ntuple.NTuples;
 import put.ci.cevo.rl.agent.functions.RealFunction;
 import put.ci.cevo.rl.environment.Transition;
 import put.ci.cevo.util.Pair;
-import put.ci.cevo.util.RandomUtils;
+import put.ci.cevo.util.serialization.RandomUtilsRenamed;
 
 public class TDLGame2048 {
 
@@ -90,7 +90,7 @@ public class TDLGame2048 {
 
 			Transition<State2048, Action2048> transition = null;
 			if (random.nextUniform(0, 1) < explorationRate) {
-				Action2048 randomAction = RandomUtils.pickRandom(actions, random);
+				Action2048 randomAction = RandomUtilsRenamed.pickRandom(actions, random);
 				transition = game.computeTransition(state, randomAction);
 			} else {
 				transition = chooseBestTransitionAfterstate(state, vFunction);
