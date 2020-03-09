@@ -3,7 +3,7 @@ package put.ci.cevo.games.board;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /** Represents a position on a rectangular board. Position is 0-based */
-public final class BoardPos {
+public final class BoardPos implements ExtractedInterface {
 	private final int row;
 	private final int column;
 
@@ -43,6 +43,7 @@ public final class BoardPos {
 		return new HashCodeBuilder().append(row).append(column).build();
 	}
 
+	@Override
 	public BoardPos add(BoardPos pos) {
 		return new BoardPos(row + pos.row, column + pos.column);
 	}
