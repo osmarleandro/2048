@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.math3.random.RandomDataGenerator;
 
 import put.ci.cevo.games.board.SuperType;
-import put.ci.cevo.util.RandomUtils;
+import put.ci.cevo.util.serialization.RandomUtilsRenamed;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
@@ -34,7 +34,7 @@ public class NTuple {
 		Preconditions.checkArgument(locations.length > 0);
 		double[] weights = new double[NTuple.computeNumWeights(numValues, locations.length)];
 
-		weights = RandomUtils.randomDoubleVector(weights.length, minWeight, maxWeight, random);
+		weights = RandomUtilsRenamed.randomDoubleVector(weights.length, minWeight, maxWeight, random);
 
 		return new NTuple(numValues, locations, weights);
 	}
