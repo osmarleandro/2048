@@ -28,7 +28,7 @@ public abstract class SuperType extends SuperClassExtracted {
 
 	public abstract Board clone();
 
-	public BoardPos newBoard(int row, int column) {
+	public ExtractedInterface newBoard(int row, int column) {
 		return new BoardPos(row, column);
 	}
 
