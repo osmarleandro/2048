@@ -1,8 +1,7 @@
-package put.ci.cevo.games.encodings.ntuple.eval;
+package put.ci.cevo.games.encodings.ntuple;
 
 import put.ci.cevo.games.board.SuperType;
-import put.ci.cevo.games.encodings.ntuple.NTuple;
-import put.ci.cevo.games.encodings.ntuple.NTuples;
+import put.ci.cevo.games.encodings.ntuple.eval.NTupleBoardEvaluator;
 
 public class DefaultNTupleEvaluator implements NTupleBoardEvaluator {
 
